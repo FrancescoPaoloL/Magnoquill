@@ -1,0 +1,10 @@
+# Ignore build output directories
+bin/
+build/
+
+# Ignore libraries folder (if it contains compiled or downloaded libs)
+lib/
+
+# Ignore any editor or system files (optional)
+*.swp
+*.DS_Store
