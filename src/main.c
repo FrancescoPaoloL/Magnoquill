@@ -14,13 +14,14 @@ int main() {
 
     const char *dirs[] = {"frames", "video"};
     for (int i = 0; i < 2; i++) {
-        if (!create_directory(dirs[i], 0755)) {
+        if (create_directory(dirs[i], 0755)) {
             free(g_image);
             return 1;
         }
     }
 
     //WIP
+
     free(g_image);
     return 0;
 }
