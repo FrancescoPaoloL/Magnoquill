@@ -38,10 +38,31 @@ int main() {
     }
     printf("Saving frames to 'frames/' directory...\n");
 
-    //WIP
+    //TODO: ADD CONTROLS IF ffmpeg is not installed!
+    printf("\nCreating MP4 animation...\n");
+    int ffmpeg_result = system("ffmpeg -framerate 30 -i frames/frame_%04d.ppm -c:v libx264 -pix_fmt yuv420p video/out.mp4 -y");
 
+    if (ffmpeg_result == 0) {
+        printf("Animation created successfully: video/out.mp4\n");
+        printf("Cleaning up frame files...\n");
+        
+        char filepath[256];
+        for (int i = 0; i < NUM_FRAMES; i++) {
+            sprintf(filepath, "frames/frame_%04d.ppm", i);
+            if (remove(filepath) != 0) {
+                fprintf(stderr, "Error deleting file %s: %s\n", filepath, strerror(errno));
+            }
+        }
 
-
+        rmdir("frames");
+        printf("Temporary frame files deleted.\n");
+    } else {
+        printf("Error creating animation. Frame files preserved in 'frames/' folder.\n");
+        printf("You can manually run:\n");
+        printf("ffmpeg -framerate 30 -i frames/frame_%%04d.ppm -c:v libx264 -pix_fmt yuv420p video/out.mp4\n");
+    }
+    
+    // Free the allocated image buffer
     free(g_image);
     return 0;
 }
