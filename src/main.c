@@ -38,7 +38,18 @@ int main() {
     }
     printf("Saving frames to 'frames/' directory...\n");
 
-    //TODO: ADD CONTROLS IF ffmpeg is not installed!
+    //check if ffmpeg is installed
+    printf("Checking for ffmpeg installation...\n");
+    int ffmpeg_check = system("ffmpeg -version > /dev/null 2>&1");
+    
+    if (ffmpeg_check != 0) {
+        printf("ERROR: ffmpeg is not installed or not found in PATH!\n");
+        printf("Please refer here: https://command-not-found.com/ffmpeg\n");
+        free(g_image);
+        return 1;
+    }
+
+    //ok ffmpeg is installed, proceed to create the MP4 animation
     printf("\nCreating MP4 animation...\n");
     int ffmpeg_result = system("ffmpeg -framerate 30 -i frames/frame_%04d.ppm -c:v libx264 -pix_fmt yuv420p video/out.mp4 -y");
 
