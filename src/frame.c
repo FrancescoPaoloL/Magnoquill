@@ -57,9 +57,10 @@ void generate_frame(double t, int frame_number) {
         };
     */
 
-    double t8 = 8.0 * t;
-    double t2 = 2.0 * t;
-    double cos_c_factor = 50.0;
+    double t8 = 8.0 * t;                                                            // correspond to the 8*t
+    double t2 = 2.0 * t;                                                            // correspond to the 2*t
+                                                                                    //
+    double cos_c_factor = 50.0;                                                     // these because of cos/sin multiplication
     double sin_c_factor = 39.0;
 
     for (int i = MAX_I; i >= 0; --i) {

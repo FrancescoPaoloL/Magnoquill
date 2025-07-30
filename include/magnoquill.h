@@ -44,3 +44,8 @@ extern unsigned char *g_image;
 
 /* Function to generate a single frame at time t and frame index frame_number */
 void generate_frame(double t, int frame_number);
+
+/* Declarations (prototypes) */
+void fill_bg(void);
+void plot_coordinates(double x, double y);
+

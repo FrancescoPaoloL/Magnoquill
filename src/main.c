@@ -1,10 +1,13 @@
 #include "magnoquill.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/stat.h>
 #include <errno.h>
 #include <unistd.h>
 #include "utils.h"
+
+
 
 int main() {
     // Allocate memory for the global image buffer 
