@@ -9,4 +9,8 @@ lib/
 *.swp
 *.DS_Store
 
+frames/
 video/
+
+tmp/
+
