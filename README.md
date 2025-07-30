@@ -20,7 +20,22 @@ When these points are calculated and drawn one after another, they create shapes
 The cool thing is that simple math formulas can make these rich and surprising pictures.
 
 That's my attempt to reproduce it in C.
-To make the process faster, I used  <a href="https://ffmpeg.org/" target="_blank" rel="noopener noreferrer">ffmpeg</a>, a powerful tool for handling video and audio. I chose this because I don’t think I’m ready to write all the code needed to create MP4 files on my own yet
+
+We chose the PPM format (Portable Pixel Map) because it is simple. 
+In a nutshell, this format stores color images by saving the RGB values for each pixel. 
+The file starts:
+    - with a header that specifies the format (in our case, P6, which is binary and faster to read), 
+    - the image size, and 
+    - the type. 
+
+After the header, the pixel data is stored from left to right and top to bottom, with the origin (0,0) at the top-left corner.
+
+
+To speed up the process, I used <a href="https://ffmpeg.org/" target="_blank" rel="noopener noreferrer">ffmpeg</a> because I’m not yet ready to write all the code needed to create MP4 files from scratch.
+
+![Animation preview](https://raw.githubusercontent.com/FrancescoPaoloL/Magnoquill/main/images/output.gif)
+
+
 
 ## Development Environment
 
